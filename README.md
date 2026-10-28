@@ -1,4 +1,4 @@
-> **de-kaput demo fork.** This fork of [android/architecture-samples](https://github.com/android/architecture-samples) shows [de-kaput](https://github.com/vaazh-studios/de-kaput) at work. The commit "feat: new task titles start with a capital letter" plants a crash on purpose (a title of only spaces), and the pull requests labelled `de-kaput` reproduce it with a test, then fix it. Everything else is the upstream sample.
+> **de-kaput demo fork.** This fork of [android/architecture-samples](https://github.com/android/architecture-samples) shows [de-kaput](https://github.com/vaazh-studios/de-kaput) at work. Two commits plant crashes on purpose: "feat: new task titles start with a capital letter" (a title of only spaces) and "feat: active tasks first, then by title" (a sort order that breaks Java's comparator contract on a long list with untitled tasks; an agent given only the crash report found the cause and fixed it). The pull requests labelled `de-kaput` reproduce each crash with a test, then fix it. Everything else is the upstream sample.
 
 # Android Architecture Samples
 

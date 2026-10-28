@@ -67,7 +67,8 @@ class AddEditTaskViewModel @Inject constructor(
 
     // Called when clicking on fab.
     fun saveTask() {
-        if (uiState.value.title.isEmpty() || uiState.value.description.isEmpty()) {
+        // A title of only spaces is as empty as no title (and has no first letter to capitalize).
+        if (uiState.value.title.isBlank() || uiState.value.description.isEmpty()) {
             _uiState.update {
                 it.copy(userMessage = R.string.empty_task_message)
             }

@@ -1,0 +1,8 @@
+version: 1
+apps:
+  - platform: android
+    crashlytics-app-id: "1:0:android:demo"
+    packages: [com.example.android.architecture.blueprints.todoapp]
+    modules:
+      - path: app
+        gradle-task: ":app:testDebugUnitTest"

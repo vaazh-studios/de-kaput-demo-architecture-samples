@@ -1,3 +1,5 @@
+> **de-kaput demo fork.** This fork of [android/architecture-samples](https://github.com/android/architecture-samples) shows [de-kaput](https://github.com/vaazh-studios/de-kaput) at work. The commit "feat: new task titles start with a capital letter" plants a crash on purpose (a title of only spaces), and the pull requests labelled `de-kaput` reproduce it with a test, then fix it. Everything else is the upstream sample.
+
 # Android Architecture Samples
 
 These samples showcase different architectural approaches to developing Android apps. In its different branches you'll find the same app (a TODO app) implemented with small differences.

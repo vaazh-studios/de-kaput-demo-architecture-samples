@@ -85,7 +85,7 @@ class TasksViewModel @Inject constructor(
             }
             is Async.Success -> {
                 TasksUiState(
-                    items = tasksAsync.data,
+                    items = tasksAsync.data.sortedWith(TaskListOrder),
                     filteringUiInfo = filterUiInfo,
                     isLoading = isLoading,
                     userMessage = userMessage

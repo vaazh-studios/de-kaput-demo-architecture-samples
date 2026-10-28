@@ -38,14 +38,17 @@ class AddEditTaskBlankTitleTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     @Test
-    fun saveNewTask_titleOfOnlySpaces_showsEmptyTaskMessage() = runTest {
+    fun saveNewTask_titleOfOnlySpaces_showsEmptyTaskMessage() {
         val tasksRepository = FakeTaskRepository()
         val addEditTaskViewModel = AddEditTaskViewModel(tasksRepository, SavedStateHandle())
         addEditTaskViewModel.updateTitle("   ")
         addEditTaskViewModel.updateDescription("Buy milk")
 
-        addEditTaskViewModel.saveTask()
-        advanceUntilIdle()
+        // runTest rethrows a crash in the save's coroutine when it returns, before the assertions.
+        runTest {
+            addEditTaskViewModel.saveTask()
+            advanceUntilIdle()
+        }
 
         assertThat(addEditTaskViewModel.uiState.value.userMessage).isEqualTo(string.empty_task_message)
         assertThat(tasksRepository.savedTasks.value).isEmpty()

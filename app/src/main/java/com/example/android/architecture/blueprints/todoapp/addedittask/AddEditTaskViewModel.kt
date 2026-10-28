@@ -100,7 +100,9 @@ class AddEditTaskViewModel @Inject constructor(
     }
 
     private fun createNewTask() = viewModelScope.launch {
-        taskRepository.createTask(uiState.value.title, uiState.value.description)
+        // New titles start with a capital letter, like the rest of the list.
+        val title = uiState.value.title.trim().let { it.first().uppercase() + it.drop(1) }
+        taskRepository.createTask(title, uiState.value.description)
         _uiState.update {
             it.copy(isTaskSaved = true)
         }

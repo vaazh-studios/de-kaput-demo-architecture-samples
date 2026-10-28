@@ -25,7 +25,9 @@ import com.example.android.architecture.blueprints.todoapp.data.Task
 internal val TaskListOrder = Comparator<Task> { a, b ->
     when {
         a.isActive != b.isActive -> if (a.isActive) -1 else 1
-        a.title.isBlank() -> 1
+        // Decide on both titles: answering 1 whenever a is untitled says "a after b" both ways for
+        // two untitled tasks, and a titled task compares after "" too, which breaks the sort.
+        a.title.isBlank() != b.title.isBlank() -> if (a.title.isBlank()) 1 else -1
         else -> a.title.compareTo(b.title, ignoreCase = true)
     }
 }
